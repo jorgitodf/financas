@@ -1,0 +1,21 @@
+{
+    "name": "jorgito/financas",
+    "authors": [
+        {
+            "name": "Jorgito Paiva",
+            "email": "jspaiva.1977@gmail.com"
+        }
+    ],
+    "require": {
+        "robmorgan/phinx": "^0.8.0",
+        "xtreamwayz/pimple-container-interop": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Financas\\": "src/"
+        }
+    },
+    "require-dev": {
+        "fzaninotto/faker": "1.6.0"
+    }
+}
