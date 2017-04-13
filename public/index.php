@@ -42,6 +42,37 @@ $app
         $data = $request->getParsedBody();
         \Financas\Models\CategoryCost::create($data);
         return $app->route('category-costs.list');
-    }, 'category-costs.store');
+    }, 'category-costs.store')
+    ->get('/category-costs/edit/{id}', function (ServerRequestInterface $request) use($app) {
+        $view = $app->service('view.renderer');
+        $id = $request->getAttribute('id');
+        $category = \Financas\Models\CategoryCost::findOrFail($id);
+        return $view->render('category-costs/edit.html.twig', [
+            'category' => $category
+        ]);
+    }, 'category-costs.edit')
+    ->post('/category-costs/update/{id}', function (ServerRequestInterface $request) use($app) {
+        $id = $request->getAttribute('id');
+        $category = \Financas\Models\CategoryCost::find($id);
+        $data = $request->getParsedBody();
+        //$category->name = $data['name'];
+        $category->fill($data);
+        $category->save();
+        return $app->route('category-costs.list');
+    }, 'category-costs.update')
+    ->get('/category-costs/show/{id}', function (ServerRequestInterface $request) use($app) {
+        $view = $app->service('view.renderer');
+        $id = $request->getAttribute('id');
+        $category = \Financas\Models\CategoryCost::findOrFail($id);
+        return $view->render('category-costs/show.html.twig', [
+            'category' => $category
+        ]);
+    }, 'category-costs.show')
+    ->get('/category-costs/delete/{id}', function (ServerRequestInterface $request) use($app) {
+        $id = $request->getAttribute('id');
+        $category = \Financas\Models\CategoryCost::findOrFail($id);
+        $category->delete();
+        return $app->route('category-costs.list');
+    }, 'category-costs.delete');
 
 $app->start();
