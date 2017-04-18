@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace Financas;
 
 use Psr\Http\Message\RequestInterface;
