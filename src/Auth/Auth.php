@@ -15,7 +15,8 @@ class Auth implements AuthInterface
         $this->jasnyAuth = $jasnyAuth;
         $this->sessionStart();
     }
-    
+
+
     public function login(array $credentials): bool
     {
         list('email' => $email, 'password' => $password) = $credentials;
