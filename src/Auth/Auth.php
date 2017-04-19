@@ -10,7 +10,10 @@ class Auth implements AuthInterface
     */
     private $jasnyAuth;
     
-    function __construct(JasnyAuth $jasnyAuth) 
+    /**
+     * Auth Constructor
+     */
+    function __construct(JasnyAuth $jasnyAuth)
     {
         $this->jasnyAuth = $jasnyAuth;
         $this->sessionStart();

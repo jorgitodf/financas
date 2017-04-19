@@ -6,7 +6,7 @@ namespace Financas\Models;
 use Illuminate\Database\Eloquent\Model;
 use Jasny\Auth\User as JasnyUser;
 
-class User extends Model implements JasnyUser, UserInterface
+class User extends Model implements JasnyUser
 {
     //Mass Assignment
     protected $fillable = [
@@ -15,33 +15,37 @@ class User extends Model implements JasnyUser, UserInterface
         'email',
         'password'
     ];
-    /**
-     * Get user id
-     *
-     * @return int|string
-     */
-    public function getId():int
-    {
-        return (int)$this->id;
-    }
-    /**
-     * Get user's username
-     *
-     * @return string
-     */
-    public function getUsername():string
-    {
-        return $this->email;
-    }
+ 
     /**
      * Get user's hashed password
      *
      * @return string
      */
-    public function getHashedPassword():string
+    public function getHashedPassword(): string 
     {
         return $this->password;
     }
+
+    /**
+     * Get user id
+     *
+     * @return int|string
+     */
+    public function getId() 
+    {
+        return (int)$this->id;
+    }
+
+    /**
+     * Get user's username
+     *
+     * @return string
+     */
+    public function getUsername(): string 
+    {
+        return $this->email;
+    }
+
     /**
      * Event called on login.
      *
@@ -51,6 +55,7 @@ class User extends Model implements JasnyUser, UserInterface
     {
         // TODO: Implement onLogin() method.
     }
+
     /**
      * Event called on logout.
      *
@@ -60,16 +65,5 @@ class User extends Model implements JasnyUser, UserInterface
     {
         // TODO: Implement onLogout() method.
     }
-    public function getFullname(): string
-    {
-        return "{$this->first_name} {$this->last_name}";
-    }
-    public function getEmail(): string
-    {
-        return $this->email;
-    }
-    public function getPassword(): string
-    {
-        return $this->password;
-    }
+
 }
