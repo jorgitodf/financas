@@ -1,1 +1,3 @@
 composer require jasny/auth:1.0.1
+
+php migrate-seed.php

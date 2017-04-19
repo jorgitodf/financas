@@ -60,8 +60,9 @@ class DefaultRepository implements RepositoryInterface
         
     }
 
-    public function findByField(string $field, $value): array {
-        return $this->model->where($field,'=',$value)->toArray();
+    public function findByField(string $field, $value)
+    {
+        return $this->model->where($field,'=',$value)->get();
     }
 
 }
