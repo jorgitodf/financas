@@ -55,7 +55,7 @@ class DefaultRepository implements RepositoryInterface
         if ($failIfNotExist) {
             return $this->model->findOrFail($id);
         } else {
-            $this->model->find($id);
+            return $this->model->find($id);
         }
         
     }
