@@ -5,6 +5,7 @@ namespace Financas\Plugins;
 use Interop\Container\ContainerInterface;
 use Financas\Models\CategoryCost;
 use Financas\Models\User;
+use Financas\Models\BillReceive;
 use Financas\Repository\RepositoryFactory;
 use Financas\ServiceContainerInterface;
 use Illuminate\Database\Capsule\Manager as Capsule;  
@@ -21,6 +22,9 @@ class DbPlugin implements PluginInterface
         $container->add('repository.factory', new RepositoryFactory());
         $container->addLazy('category-cost.repository', function(ContainerInterface $container){
             return $container->get('repository.factory')->factory(CategoryCost::class);
+        });
+        $container->addLazy('bill-receive.repository', function(ContainerInterface $container){
+            return $container->get('repository.factory')->factory(BillReceive::class);
         });
         $container->addLazy('user.repository', function(ContainerInterface $container){
             return $container->get('repository.factory')->factory(User::class);
