@@ -10,6 +10,7 @@ use Financas\Models\BillPay;
 use Financas\Repository\RepositoryFactory;
 use Financas\ServiceContainerInterface;
 use Illuminate\Database\Capsule\Manager as Capsule;  
+use Financas\Repository\StatementRepository;
 
 class DbPlugin implements PluginInterface
 {
@@ -32,6 +33,9 @@ class DbPlugin implements PluginInterface
         });
         $container->addLazy('user.repository', function(ContainerInterface $container){
             return $container->get('repository.factory')->factory(User::class);
+        });
+        $container->addLazy('statement.repository', function(){
+            return new StatementRepository();
         });
     }
 }
